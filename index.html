@@ -6,6 +6,7 @@
 
     <title>GPS</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="manifest" href="./manifest.json">
     <link rel="stylesheet" href="style.css"/>
   </head>
   <body>
@@ -77,10 +78,10 @@ firebase.initializeApp(config);
       S1 = snap.val().S1;
       if(S1 == 1){
         $(".lightButton").text("Security is ON");
-        $(".lightButton").css({"background" : "#4CAF50"});
+        $(".lightButton").css({"background" : "#c62828"});
       } else {
         $(".lightButton").text("Security is OFF");
-        $(".lightButton").css({"background" : "#c62828"});
+        $(".lightButton").css({"background" : "#86d993"});
       }
     });
 
