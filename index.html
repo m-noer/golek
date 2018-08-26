@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GPS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css"/>
+  </head>
+  <body>
+    <iframe
+      id="golek"
+      frameborder="0" style="border:0"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCbl5qfPlb3phfW0Y_YsNXHgTnY4pPwGlY&q=-7,110" allowfullscreen>
+    </iframe>
+    <!-- <div id="map"></div> -->
+    <!-- <input class="tgl tgl-skewed" id="cb5" type="checkbox"/>
+    <label class="tgl-btn" data-tg-off="Security OFF" data-tg-on="Security ON" for="cb5"></label> -->
+    <button class="lightButton">Golek Security!</button>
+  </body>
+
+  <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase.js"></script>
+
+
+<script>
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyCDaGLtVOjLx4i3UD3KXb06y5BEIxhcMDY",
+  authDomain: "golek-f3289.firebaseapp.com",
+  databaseURL: "https://golek-f3289.firebaseio.com",
+  projectId: "golek-f3289",
+  storageBucket: "golek-f3289.appspot.com",
+  messagingSenderId: "652920422929"
+};
+firebase.initializeApp(config);
+
+  var database = firebase.database();
+  var loc;
+
+
+
+  // The location of Uluru
+  database.ref().on("value", function(snap){
+    loc = snap.val().location;
+    console.log(loc.lat);
+    console.log(loc.lng);
+
+    var lintang = loc.lat;
+    var bujur = loc.lng;
+
+    var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+      });
+    }
+
+    $("#golek").attr("src", "https://www.google.com/maps/embed/v1/place?key=AIzaSyCbl5qfPlb3phfW0Y_YsNXHgTnY4pPwGlY&q="+lintang+","+bujur);
+
+    // The location of Uluru
+    var uluru = {lat: lintang, lng: bujur};
+    // The map, centered at Uluru
+    var map = new google.maps.Map(
+        document.getElementById('map'), {zoom: 10, center: uluru});
+    // The marker, positioned at Uluru
+    var marker = new google.maps.Marker({position: uluru, map: map});
+  });
+
+
+  $(document).ready(function(){
+    var database = firebase.database();
+    var S1;
+
+    database.ref().on("value", function(snap){
+      S1 = snap.val().S1;
+      if(S1 == 1){
+        $(".lightButton").text("Security is ON");
+        $(".lightButton").css({"background" : "#4CAF50"});
+      } else {
+        $(".lightButton").text("Security is OFF");
+        $(".lightButton").css({"background" : "#c62828"});
+      }
+    });
+
+    $(".lightButton").click(function(){
+      var firebaseRef = firebase.database().ref().child("S1");
+
+      if(S1 == 1){
+        firebaseRef.set(0);
+        S1 = 0;
+      } else {
+        firebaseRef.set(1);
+        S1 = 1;
+      }
+    });
+  });
+
+</script>
+
+<script src="script.js"></script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbl5qfPlb3phfW0Y_YsNXHgTnY4pPwGlY&callback=initMap">
+</script>
+</html>
