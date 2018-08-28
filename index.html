@@ -12,7 +12,7 @@
 
   </head>
   <body>
-    <img src="https://raw.githubusercontent.com/m-noer/golek2/master/images/icons/golek2.png" alt="">
+    <img id="logo" src="images/golek2.png" alt="">
     <iframe
       id="golek"
       frameborder="0" style="border:0" gestureHandling: 'greedy'
@@ -84,14 +84,7 @@ firebase.initializeApp(config);
         $(".lightButton").text("Security is ON");
         $(".lightButton").css({"background" : "#86d993"});
 
-        swal({
-          title: 'Security',
-          text: 'Anti Maling Diaktifkan!',
-          imageUrl: 'https://www.trendmicro.com/azure/wp-content/uploads/2016/05/TM_Lock_Sequence_300x300_Looping.gif',
-          height: 200,
-          imageAlt: 'Custom image',
-          animation: true
-        });
+
 
       } else {
         $(".lightButton").text("Security is OFF");
@@ -121,9 +114,18 @@ firebase.initializeApp(config);
       if(S1 == 1){
         firebaseRef.set(0);
         S1 = 0;
+
       } else {
         firebaseRef.set(1);
         S1 = 1;
+        swal({
+          title: 'Security',
+          text: 'Anti Maling Diaktifkan!',
+          imageUrl: 'https://www.trendmicro.com/azure/wp-content/uploads/2016/05/TM_Lock_Sequence_300x300_Looping.gif',
+          height: 200,
+          imageAlt: 'Custom image',
+          animation: true
+        });
       }
     });
   });
