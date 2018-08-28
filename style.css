@@ -4,8 +4,14 @@ body{
   overflow-y: hidden;
 }
 
+img{
+  height: 5%;
+  right: 35%;
+  background: #fff;
+}
+
 iframe {
-  height: 90%;  /* The height is 400 pixels */
+  height: 83.5%;  /* The height is 400 pixels */
   width: 100%;  /* The width is the width of the web page */
  }
 
@@ -20,11 +26,14 @@ iframe {
   color: #fff;
 }
 
+
 button {
-  padding: 20px;
+  height: 8%;
   width: 100%;
   background: #eee;
   border: none;
+  box-sizing: border-box;
+  border-radius: 0px;
 }
 
 .tgl {
