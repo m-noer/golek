@@ -8,11 +8,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="manifest" href="./manifest.json">
     <link rel="stylesheet" href="style.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2"></script>
+
   </head>
   <body>
     <iframe
       id="golek"
-      frameborder="0" style="border:0"
+      frameborder="0" style="border:0" gestureHandling: 'greedy'
       src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCbl5qfPlb3phfW0Y_YsNXHgTnY4pPwGlY&q=-7,110" allowfullscreen>
     </iframe>
     <!-- <div id="map"></div> -->
@@ -54,7 +56,8 @@ firebase.initializeApp(config);
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: -34.397, lng: 150.644},
-        zoom: 8
+        zoom: 8,
+        gestureHandling: 'greedy'
       });
     }
 
@@ -64,7 +67,7 @@ firebase.initializeApp(config);
     var uluru = {lat: lintang, lng: bujur};
     // The map, centered at Uluru
     var map = new google.maps.Map(
-        document.getElementById('map'), {zoom: 10, center: uluru});
+        document.getElementById('map'), {zoom: 16, center: uluru, gestureHandling: 'greedy'});
     // The marker, positioned at Uluru
     var marker = new google.maps.Marker({position: uluru, map: map});
   });
@@ -78,11 +81,37 @@ firebase.initializeApp(config);
       S1 = snap.val().S1;
       if(S1 == 1){
         $(".lightButton").text("Security is ON");
-        $(".lightButton").css({"background" : "#c62828"});
+        $(".lightButton").css({"background" : "#86d993"});
+
+        swal({
+          title: 'Security',
+          text: 'Anti Maling Diaktifkan!',
+          imageUrl: 'https://www.trendmicro.com/azure/wp-content/uploads/2016/05/TM_Lock_Sequence_300x300_Looping.gif',
+          height: 200,
+          imageAlt: 'Custom image',
+          animation: true
+        });
+
       } else {
         $(".lightButton").text("Security is OFF");
-        $(".lightButton").css({"background" : "#86d993"});
+        $(".lightButton").css({"background" : "#c62828"});
       }
+    });
+
+    database.ref().on("value", function(snap){
+      gyro = snap.val().gyro;
+
+      if(gyro>=43 && gyro<=310) {
+        swal({
+          title: 'Security',
+          text: 'Motoru Jatuh',
+          imageUrl: 'https://i.pinimg.com/originals/9a/55/cf/9a55cfbe6d0b89f06c4daa673b765ce3.gif',
+          height: 200,
+          imageAlt: 'Custom image',
+          animation: true
+        });
+      }
+
     });
 
     $(".lightButton").click(function(){
@@ -100,7 +129,6 @@ firebase.initializeApp(config);
 
 </script>
 
-<script src="script.js"></script>
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbl5qfPlb3phfW0Y_YsNXHgTnY4pPwGlY&callback=initMap">
 </script>
