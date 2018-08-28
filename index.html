@@ -25,7 +25,7 @@
     <label class="tgl-btn" data-tg-off="Security OFF" data-tg-on="Security ON" for="cb5"></label> -->
     <button class="lightButton">Golek Security!</button>
   </body>
-
+  <script src="script.js" charset="utf-8"></script>
   <script src="https://www.gstatic.com/firebasejs/5.4.1/firebase.js"></script>
 
 
@@ -54,24 +54,8 @@ firebase.initializeApp(config);
     var lintang = loc.lat;
     var bujur = loc.lng;
 
-    var map;
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8,
-        gestureHandling: 'greedy'
-      });
-    }
-
     $("#golek").attr("src", "https://www.google.com/maps/embed/v1/place?key=AIzaSyCbl5qfPlb3phfW0Y_YsNXHgTnY4pPwGlY&q="+lintang+","+bujur);
 
-    // The location of Uluru
-    var uluru = {lat: lintang, lng: bujur};
-    // The map, centered at Uluru
-    var map = new google.maps.Map(
-        document.getElementById('map'), {zoom: 16, center: uluru, gestureHandling: 'greedy'});
-    // The marker, positioned at Uluru
-    var marker = new google.maps.Marker({position: uluru, map: map});
   });
 
 
@@ -101,7 +85,6 @@ firebase.initializeApp(config);
           title: 'Security',
           text: 'Motor Jatuh, Mungkin Saja Terkena Kecelakaan',
           imageUrl: 'images/jatuh.jpg',
-          height: 200,
           imageAlt: 'Custom image',
           animation: true
         });
@@ -119,7 +102,6 @@ firebase.initializeApp(config);
           title: 'Security',
           text: 'Motorumu Diambil Maling!',
           imageUrl: 'images/maling.gif',
-          height: 200,
           imageAlt: 'Custom image',
           animation: true
         });
@@ -144,27 +126,12 @@ firebase.initializeApp(config);
           text: 'Anti Maling Diaktifkan!',
           imageUrl: 'images/security.gif',
           imageAlt: 'Custom image',
-          height:50,
           animation: true
         });
       }
     });
   });
 
-  // // Service Workers
-  // if ('serviceWorker' in navigator) {
-  //   navigator.serviceWorker.register('./service-worker.js')
-  //   .then(function(registration) {
-  //     console.log('Registration successful, scope is:', registration.scope);
-  //   })
-  //   .catch(function(error) {
-  //     console.log('Service worker registration failed, error:', error);
-  //   });
-  // }
-
 </script>
 
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbl5qfPlb3phfW0Y_YsNXHgTnY4pPwGlY&callback=initMap">
-</script>
 </html>
