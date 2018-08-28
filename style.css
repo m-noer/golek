@@ -1,18 +1,34 @@
 body{
   text-align: center;
-  height: 100vh;
-  overflow-y: hidden;
+  //height: 100vh;
+  background: #1c1c1c;
 }
 
 #logo{
-  height: 30px;
-  right: 35%;
-  background: #fff;
+  height: 35px;
+  padding: 2px;
+
 }
 
-iframe {
+/* iframe {
+  min-height: 38em;
+  position: relative;
   height: 83.5%;  /* The height is 400 pixels */
-  width: 100%;  /* The width is the width of the web page */
+  width: 100%;
+ } */
+
+ .map-responsive{
+     overflow:hidden;
+     padding-bottom:56.25%;
+     position:relative;
+     height:0;
+ }
+ .map-responsive iframe{
+     left:0;
+     top:50px;
+     height:85%;
+     width:100%;
+     position:absolute;
  }
 
 .lightStatus{
@@ -24,6 +40,10 @@ iframe {
   font-family: Verdana;
   padding: 10px;
   color: #fff;
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
 }
 
 
@@ -33,7 +53,11 @@ button {
   background: #eee;
   border: none;
   box-sizing: border-box;
-  border-radius: 0px;
+  border-radius: 2px;
+}
+
+button:focus{
+  outline: none;
 }
 
 .tgl {

@@ -12,12 +12,14 @@
 
   </head>
   <body>
-    <img id="logo" src="images/golek2.png" alt="">
-    <iframe
-      id="golek"
-      frameborder="0" style="border:0" gestureHandling: 'greedy'
-      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCbl5qfPlb3phfW0Y_YsNXHgTnY4pPwGlY&q=-7,110" allowfullscreen>
-    </iframe>
+    <img id="logo" src="images/golek3.png" alt="">
+    <div class="map-responsive">
+      <iframe
+        id="golek"
+        frameborder="0" style="border:0" gestureHandling: 'greedy'
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCbl5qfPlb3phfW0Y_YsNXHgTnY4pPwGlY&q=-7,110" allowfullscreen>
+      </iframe>
+    </div>
     <!-- <div id="map"></div> -->
     <!-- <input class="tgl tgl-skewed" id="cb5" type="checkbox"/>
     <label class="tgl-btn" data-tg-off="Security OFF" data-tg-on="Security ON" for="cb5"></label> -->
@@ -122,6 +124,7 @@ firebase.initializeApp(config);
           text: 'Anti Maling Diaktifkan!',
           imageUrl: 'https://www.trendmicro.com/azure/wp-content/uploads/2016/05/TM_Lock_Sequence_300x300_Looping.gif',
           imageAlt: 'Custom image',
+          height:50,
           animation: true
         });
       }
