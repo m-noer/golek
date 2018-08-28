@@ -96,7 +96,7 @@ firebase.initializeApp(config);
     database.ref().on("value", function(snap){
       gyro = snap.val().gyro;
 
-      if(gyro>=43 && gyro<=310) {
+      while(gyro>=43 && gyro<=310) {
         swal({
           title: 'Security',
           text: 'Motor Jatuh, Mungkin Saja Terkena Kecelakaan',
@@ -110,7 +110,20 @@ firebase.initializeApp(config);
     });
 
     database.ref().on("value", function(snap){
-      gyro = snap.val().speed;
+      speed = snap.val().speed;
+
+
+
+      while(speed>3) {
+        swal({
+          title: 'Security',
+          text: 'Motorumu Diambil Maling!',
+          imageUrl: 'images/maling.gif',
+          height: 200,
+          imageAlt: 'Custom image',
+          animation: true
+        });
+      }
 
       if(speed>3) {
         swal({
