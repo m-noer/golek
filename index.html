@@ -82,13 +82,13 @@ firebase.initializeApp(config);
     database.ref().on("value", function(snap){
       S1 = snap.val().S1;
       if(S1 == 1){
-        $(".lightButton").text("Security is ON");
+        $(".lightButton").text("Anti Maling is ON");
         $(".lightButton").css({"background" : "#8BC34A"});
 
 
 
       } else {
-        $(".lightButton").text("Security is OFF");
+        $(".lightButton").text("Anti Maling is OFF");
         $(".lightButton").css({"background" : "#FF5722"});
       }
     });
@@ -99,8 +99,24 @@ firebase.initializeApp(config);
       if(gyro>=43 && gyro<=310) {
         swal({
           title: 'Security',
-          text: 'Motoru Jatuh',
+          text: 'Motor Jatuh, Mungkin Saja Terkena Kecelakaan',
           imageUrl: 'images/jatuh.jpg',
+          height: 200,
+          imageAlt: 'Custom image',
+          animation: true
+        });
+      }
+
+    });
+
+    database.ref().on("value", function(snap){
+      gyro = snap.val().speed;
+
+      if(speed>3) {
+        swal({
+          title: 'Security',
+          text: 'Motorumu Diambil Maling!',
+          imageUrl: 'images/maling.gif',
           height: 200,
           imageAlt: 'Custom image',
           animation: true
