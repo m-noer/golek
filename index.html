@@ -42,7 +42,7 @@ firebase.initializeApp(config);
   var database = firebase.database();
   var loc;
 
-  
+
   // The location of Uluru
   database.ref().on("value", function(snap){
     loc = snap.val().location;
@@ -121,13 +121,23 @@ firebase.initializeApp(config);
           title: 'Security',
           text: 'Anti Maling Diaktifkan!',
           imageUrl: 'https://www.trendmicro.com/azure/wp-content/uploads/2016/05/TM_Lock_Sequence_300x300_Looping.gif',
-          height: 200,
           imageAlt: 'Custom image',
           animation: true
         });
       }
     });
   });
+
+  // // Service Workers
+  // if ('serviceWorker' in navigator) {
+  //   navigator.serviceWorker.register('./service-worker.js')
+  //   .then(function(registration) {
+  //     console.log('Registration successful, scope is:', registration.scope);
+  //   })
+  //   .catch(function(error) {
+  //     console.log('Service worker registration failed, error:', error);
+  //   });
+  // }
 
 </script>
 
