@@ -26,7 +26,7 @@ body{
  .map-responsive iframe{
      left:0;
      top:50px;
-     height:85%;
+     height:84%;
      width:100%;
      position:absolute;
  }
@@ -36,14 +36,15 @@ body{
   font-family: Verdana;
 }
 .lightButton{
+  margin-top: 2px;
   font-size: 1.5em;
   font-family: Verdana;
   padding: 10px;
   color: #fff;
   position: absolute;
-  bottom: 0px;
-  left: 0;
-  width: 100%;
+  bottom: 5px;
+  left: 3%;
+  width: 95%;
 }
 
 
@@ -53,7 +54,7 @@ button {
   background: #eee;
   border: none;
   box-sizing: border-box;
-  border-radius: 2px;
+  border-radius: 40px;
 }
 
 button:focus{
