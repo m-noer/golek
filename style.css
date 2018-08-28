@@ -24,10 +24,10 @@ body{
      height:0;
  }
  .map-responsive iframe{
-     left:0;
+     left:1%
      top:50px;
      height:83.5%;
-     width:100%;
+     width:98%;
      position:absolute;
  }
 
